@@ -15,7 +15,7 @@ TapSynthAudioProcessorEditor::TapSynthAudioProcessorEditor (TapSynthAudioProcess
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize (400, 300);
+    setSize(600, 500);
 
 
     addAndMakeVisible(adsr);
@@ -35,6 +35,9 @@ void TapSynthAudioProcessorEditor::paint (juce::Graphics& g)
 
 void TapSynthAudioProcessorEditor::resized()
 {
-    adsr.setBounds(getWidth() / 2, 0, getWidth() / 2, getHeight());
-    osc.setBounds(10, 10, 180, 200);
+    const auto paddingX = 5;
+    const auto paddingY = 35;
+
+    osc.setBounds(paddingX, paddingY, 300, 200);
+    adsr.setBounds(osc.getRight(), paddingY, 280, 200);
 }

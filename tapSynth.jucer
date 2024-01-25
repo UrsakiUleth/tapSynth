@@ -21,6 +21,10 @@
       <FILE id="ihLGlI" name="AdsrComponent.cpp" compile="1" resource="0"
             file="Source/UI/AdsrComponent.cpp"/>
       <FILE id="Bs53Pm" name="AdsrComponent.h" compile="0" resource="0" file="Source/UI/AdsrComponent.h"/>
+      <FILE id="QDQbO3" name="FilterComponent.cpp" compile="1" resource="0"
+            file="Source/UI/FilterComponent.cpp"/>
+      <FILE id="gfsWiF" name="FilterComponent.h" compile="0" resource="0"
+            file="Source/UI/FilterComponent.h"/>
       <FILE id="JtK6HC" name="OscComponent.cpp" compile="1" resource="0"
             file="Source/UI/OscComponent.cpp"/>
       <FILE id="AQuHBa" name="OscComponent.h" compile="0" resource="0" file="Source/UI/OscComponent.h"/>
@@ -28,6 +32,8 @@
     <GROUP id="{25A0BDAC-9A46-95FE-F63B-9FD5F15DA73D}" name="Data">
       <FILE id="OBywMB" name="AdsrData.cpp" compile="1" resource="0" file="Source/Data/AdsrData.cpp"/>
       <FILE id="uzxLb7" name="AdsrData.h" compile="0" resource="0" file="Source/Data/AdsrData.h"/>
+      <FILE id="Z94rZO" name="FilterData.cpp" compile="1" resource="0" file="Source/Data/FilterData.cpp"/>
+      <FILE id="IwTrPu" name="FilterData.h" compile="0" resource="0" file="Source/Data/FilterData.h"/>
       <FILE id="yUAyR7" name="OscData.cpp" compile="1" resource="0" file="Source/Data/OscData.cpp"/>
       <FILE id="Iv1x5h" name="OscData.h" compile="0" resource="0" file="Source/Data/OscData.h"/>
     </GROUP>
@@ -47,6 +53,7 @@
     <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
@@ -70,6 +77,7 @@
         <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_dsp" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_osc" path="../../JUCE/modules"/>
       </MODULEPATHS>
     </VS2022>
   </EXPORTFORMATS>

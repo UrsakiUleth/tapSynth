@@ -106,6 +106,8 @@ void TapSynthAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
             voice->prepareToPlay(sampleRate, samplesPerBlock, getTotalNumOutputChannels());
         }
     }
+
+    filter.prepareToPlay(sampleRate, samplesPerBlock, getTotalNumOutputChannels());
 }
 
 void TapSynthAudioProcessor::releaseResources()
@@ -174,6 +176,14 @@ void TapSynthAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce
 
     synth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
 
+    auto& filterType = *apvts.getRawParameterValue ("FILTERTYPE");
+    auto& cutoff = *apvts.getRawParameterValue ("FILTERFREQ");
+    auto& resonance = *apvts.getRawParameterValue ("FILTERRES");
+
+    filter.updateParameters (filterType, cutoff, resonance);
+
+    filter.process (buffer);
+
 }
 
 //==============================================================================
@@ -225,6 +235,11 @@ juce::AudioProcessorValueTreeState::ParameterLayout TapSynthAudioProcessor::crea
     // FM
     params.push_back(std::make_unique<juce::AudioParameterFloat>("FMFREQ", "FM Frequency", juce::NormalisableRange<float> {0.0f, 1000.0f, 0.01f, 0.3f}, 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>("FMDEPTH", "FM Depth", juce::NormalisableRange<float> {0.0f, 1000.0f, 0.01f, 0.3f}, 0.0f));
+    // Filter
+    params.push_back(std::make_unique<juce::AudioParameterChoice>("FILTERTYPE", "Filter Type", juce::StringArray {"Low Pass", "Band Pass", "High Pass"}, 0));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>("FILTERFREQ", "Filter Freq", juce::NormalisableRange<float> {20.0f, 20000.0f, 0.1f, 0.6f}, 200.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>("FILTERRES", "Filter Resonance", juce::NormalisableRange<float> {1.0f, 10.0f, 0.1f}, 1.0f));
+
     return { params.begin(), params.end() };
 
 }
